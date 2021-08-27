@@ -12,7 +12,7 @@ let color = 'black';
 let x: number | undefined;
 let y: number | undefined;
 
-function drawCircle(x, y) {
+function drawCircle(x: number, y: number) {
   ctx!.beginPath();
   ctx!.arc(x, y, size, 0, Math.PI * 2);
   ctx!.fillStyle = color;
@@ -29,7 +29,7 @@ function drawLine(x1: number, y1: number, x2: number, y2: number) {
 }
 
 function updateSizeOnScreen() {
-  sizeEl.innerText = size;
+  sizeEl.innerText = size.toString();
 }
 
 canvas.addEventListener('mousedown', (e) => {
@@ -39,7 +39,7 @@ canvas.addEventListener('mousedown', (e) => {
   y = e.offsetY;
 });
 
-canvas.addEventListener('mouseup', (e) => {
+canvas.addEventListener('mouseup', () => {
   isPressed = false;
 
   x = undefined;
@@ -59,7 +59,10 @@ canvas.addEventListener('mousemove', (e) => {
   }
 });
 
-colorEl.addEventListener('change', (e) => (color = e.target!.value));
+colorEl.addEventListener(
+  'change',
+  (e) => (color = (e.target as HTMLInputElement).value)
+);
 
 increaseBtn.addEventListener('click', () => {
   size += 5;

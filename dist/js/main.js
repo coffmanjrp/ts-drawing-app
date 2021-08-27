@@ -26,14 +26,14 @@ function drawLine(x1, y1, x2, y2) {
     ctx.stroke();
 }
 function updateSizeOnScreen() {
-    sizeEl.innerText = size;
+    sizeEl.innerText = size.toString();
 }
 canvas.addEventListener('mousedown', function (e) {
     isPressed = true;
     x = e.offsetX;
     y = e.offsetY;
 });
-canvas.addEventListener('mouseup', function (e) {
+canvas.addEventListener('mouseup', function () {
     isPressed = false;
     x = undefined;
     y = undefined;
