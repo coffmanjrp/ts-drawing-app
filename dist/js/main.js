@@ -11,9 +11,9 @@ var isPressed = false;
 var color = 'black';
 var x;
 var y;
-function drawCircle(x, y) {
+function drawCircle(cx, cy) {
     ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.arc(cx, cy, size, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
 }
@@ -48,7 +48,10 @@ canvas.addEventListener('mousemove', function (e) {
         y = y2;
     }
 });
-colorEl.addEventListener('change', function (e) { return (color = e.target.value); });
+colorEl.addEventListener('change', function (e) {
+    color = e.target.value;
+    return color;
+});
 increaseBtn.addEventListener('click', function () {
     size += 5;
     if (size > 50) {
