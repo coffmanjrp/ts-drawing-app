@@ -12,9 +12,9 @@ let color = 'black';
 let x: number | undefined;
 let y: number | undefined;
 
-function drawCircle(x: number, y: number) {
+function drawCircle(cx: number, cy: number) {
   ctx!.beginPath();
-  ctx!.arc(x, y, size, 0, Math.PI * 2);
+  ctx!.arc(cx, cy, size, 0, Math.PI * 2);
   ctx!.fillStyle = color;
   ctx!.fill();
 }
@@ -59,10 +59,11 @@ canvas.addEventListener('mousemove', (e) => {
   }
 });
 
-colorEl.addEventListener(
-  'change',
-  (e) => (color = (e.target as HTMLInputElement).value)
-);
+colorEl.addEventListener('change', (e) => {
+  color = (e.target as HTMLInputElement).value;
+
+  return color;
+});
 
 increaseBtn.addEventListener('click', () => {
   size += 5;
